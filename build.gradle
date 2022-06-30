@@ -23,6 +23,9 @@ buildscript {
         retrofit_version = '2.9.0'
         okhttp_version = '4.9.3'
 
+        // Moshi
+        moshi_version = '1.13.0'
+
         // Dagger
         dagger_version = '2.42'
         dagger_compiler_version = '2.40.5'
