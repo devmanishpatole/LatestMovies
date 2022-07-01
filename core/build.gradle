@@ -40,4 +40,6 @@ dependencies {
     api "androidx.compose.ui:ui-tooling-preview:$compose_version"
     api "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
     api "androidx.activity:activity-compose:$compose_activity_version"
+    // Paging Compose
+    api "androidx.paging:paging-compose:$paging_compose_version"
 }

@@ -18,6 +18,7 @@ buildscript {
         compose_version = '1.1.1'
         compose_activity_version = '1.4.0'
         compose_navigation_version = '2.4.2'
+        paging_compose_version = '1.0.0-alpha15'
 
         // Network client
         retrofit_version = '2.9.0'

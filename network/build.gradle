@@ -30,7 +30,7 @@ android {
             minifyEnabled false
             // URL for APIs
             buildConfigField 'String', 'BASE_URL', '"https://api.themoviedb.org/3/movie/"'
-            buildConfigField 'String', 'API_KEY', '"5af6325c243fef1df3de616b2b27fbfa/"'
+            buildConfigField 'String', 'API_KEY', '"5af6325c243fef1df3de616b2b27fbfa"'
 
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }

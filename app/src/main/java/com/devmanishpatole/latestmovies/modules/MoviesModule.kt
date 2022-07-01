@@ -1,7 +1,7 @@
-package com.devmanishpatole.network.module
+package com.devmanishpatole.latestmovies.modules
 
 import com.devmanishpatole.network.repositories.MoviesRemoteRepository
-import com.devmanishpatole.network.repositories.MoviesRepository
+import com.devmanishpatole.latestmovies.repositories.MoviesRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
