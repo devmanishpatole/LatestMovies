@@ -1,0 +1,16 @@
+// Gradle config file to hold all network dependencies and configurations
+dependencies {
+    implementation("com.squareup.moshi:moshi:$moshi_version")
+    implementation("com.squareup.moshi:moshi-kotlin:$moshi_version")
+    kapt("com.squareup.moshi:moshi-kotlin-codegen:$moshi_version")
+
+    // Network Client - Retrofit + OkHttp
+    api "com.squareup.retrofit2:retrofit:$retrofit_version"
+    api "com.squareup.retrofit2:converter-moshi:$retrofit_version"
+
+    // define a BOM and its version
+    api(platform("com.squareup.okhttp3:okhttp-bom:$okhttp_version"))
+    // define any required OkHttp artifacts without version
+    api("com.squareup.okhttp3:okhttp")
+    api("com.squareup.okhttp3:logging-interceptor")
+}
