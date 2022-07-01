@@ -4,9 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -17,14 +15,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.paging.PagingData
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
-import com.devmanishpatole.latestmovies.ui.theme.LatestMoviesTheme
-import com.devmanishpatole.network.models.Movie
 import com.devmanishpatole.latestmovies.repositories.MoviesRepository
+import com.devmanishpatole.latestmovies.ui.screen.MovieRow
+import com.devmanishpatole.latestmovies.ui.theme.LatestMoviesTheme
 import com.devmanishpatole.latestmovies.viewmodels.MoviesViewModel
+import com.devmanishpatole.network.models.Movie
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -46,7 +44,6 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-//                    Greeting("Android")
                     val movieList by remember {
                         mutableStateOf(viewModel.outputs.movies)
                     }
@@ -58,15 +55,13 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun ShowMovies(
-    movies: Flow<PagingData<Movie>>
-) {
+fun ShowMovies(movies: Flow<PagingData<Movie>>) {
     val movieList = movies.collectAsLazyPagingItems()
 
     LazyColumn {
         items(movieList) { movie ->
-            Row {
-                Text(modifier = Modifier.padding(4.dp), text = movie?.title ?: "NULL")
+            if (movie != null) {
+                MovieRow(movie = movie)
             }
         }
     }
