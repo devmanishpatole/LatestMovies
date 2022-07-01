@@ -1,4 +1,4 @@
-package com.devmanishpatole.network.repositories
+package com.devmanishpatole.latestmovies.repositories
 
 import com.devmanishpatole.core.repositories.Either
 import com.devmanishpatole.network.models.MoviesResponse
@@ -10,7 +10,6 @@ import com.devmanishpatole.network.models.MoviesResponse
  * @since 30/06/22
  */
 interface MoviesRepository {
-
     /**
      * Provide latest movie list
      */

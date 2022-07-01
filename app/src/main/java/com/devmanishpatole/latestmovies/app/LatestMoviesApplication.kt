@@ -1,4 +1,4 @@
-package com.devmanishpatole.latestmovies
+package com.devmanishpatole.latestmovies.app
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
