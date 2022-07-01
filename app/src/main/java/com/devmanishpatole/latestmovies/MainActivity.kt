@@ -48,7 +48,6 @@ class MainActivity : ComponentActivity() {
                 ) {
 //                    Greeting("Android")
                     val movieList by remember {
-                        // Flow of orders
                         mutableStateOf(viewModel.outputs.movies)
                     }
                     ShowMovies(movies = movieList)
