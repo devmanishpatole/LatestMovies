@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "LatestMovies"
-include ':app'
+include ':app', ':core', ':network'
