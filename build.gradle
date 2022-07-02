@@ -23,9 +23,6 @@ buildscript {
         // Image loading
         coil_version = '2.1.0'
 
-        // Animation
-        lottie_version = '5.2.0'
-
         // Network client
         retrofit_version = '2.9.0'
         okhttp_version = '4.9.3'

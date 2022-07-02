@@ -44,6 +44,4 @@ dependencies {
     api "androidx.paging:paging-compose:$paging_compose_version"
     // Image loading Compose
     api "io.coil-kt:coil-compose:$coil_version"
-    // Animation
-    api "com.airbnb.android:lottie-compose:$lottie_version"
 }
