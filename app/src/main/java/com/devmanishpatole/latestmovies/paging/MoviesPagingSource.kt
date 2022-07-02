@@ -2,18 +2,19 @@ package com.devmanishpatole.latestmovies.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.devmanishpatole.latestmovies.repositories.MoviesRepository
+import com.devmanishpatole.core.repositories.Either
 import com.devmanishpatole.network.models.Movie
-import javax.inject.Inject
+import com.devmanishpatole.network.models.MoviesResponse
 
 /**
  * Movies paging source
  *
  * @author Manish Patole, contact@devmanishpatole.com
- * @since 30/06/22
+ * @since 03/07/22
  */
-class MoviesPagingSource @Inject constructor(private val repository: MoviesRepository) :
-    PagingSource<Int, Movie>() {
+abstract class MoviesPagingSource : PagingSource<Int, Movie>(){
+
+    abstract suspend fun fetchMovies(nextPage : Int) : Either<MoviesResponse>
 
     override fun getRefreshKey(state: PagingState<Int, Movie>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
@@ -25,7 +26,7 @@ class MoviesPagingSource @Inject constructor(private val repository: MoviesRepos
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
         return try {
             val nextPage = params.key ?: 1
-            val movieListResponse = repository.getLatestMovies(nextPage)
+            val movieListResponse = fetchMovies(nextPage)
             var movies = emptyList<Movie>()
             var nextKey: Int? = null
 

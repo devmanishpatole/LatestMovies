@@ -29,4 +29,16 @@ class MoviesRemoteRepository @Inject constructor(
             Either.error(it.message ?: "Something went wrong!")
         }
     }
+
+    override suspend fun searchMovies(query: String, page: Int): Either<MoviesResponse> {
+        return runCatching {
+            if (networkManager.isConnected) {
+                Either.success(service.searchMovies(query, page).getResponse())
+            } else {
+                Either.error("Internet Unavailable")
+            }
+        }.getOrElse {
+            Either.error(it.message ?: "Something went wrong!")
+        }
+    }
 }

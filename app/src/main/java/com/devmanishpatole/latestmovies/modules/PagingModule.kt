@@ -4,7 +4,7 @@ import androidx.paging.InvalidatingPagingSourceFactory
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import com.devmanishpatole.network.models.Movie
-import com.devmanishpatole.latestmovies.paging.MoviesPagingSource
+import com.devmanishpatole.latestmovies.paging.LatestMoviesPagingSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,7 +26,7 @@ object PagingModule {
     )
 
     @Provides
-    fun provideInvalidationFactory(movieSource: MoviesPagingSource) =
+    fun provideInvalidationFactory(movieSource: LatestMoviesPagingSource) =
         InvalidatingPagingSourceFactory {
             movieSource
         }

@@ -14,4 +14,9 @@ interface MoviesRepository {
      * Provide latest movie list
      */
     suspend fun getLatestMovies(page: Int): Either<MoviesResponse>
+
+    /**
+     * Search movie
+     */
+    suspend fun searchMovies(query: String, page: Int): Either<MoviesResponse>
 }

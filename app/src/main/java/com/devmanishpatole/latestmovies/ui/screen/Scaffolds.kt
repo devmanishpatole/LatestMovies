@@ -1,5 +1,6 @@
 package com.devmanishpatole.latestmovies.ui.screen
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -9,6 +10,8 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -26,15 +29,15 @@ import com.devmanishpatole.latestmovies.R
  */
 @Composable
 fun MoviesScaffold(
-    title: String,
+    titleContent: @Composable () -> Unit,
     onNavigateUp: (() -> Unit)? = null,
-    screenContent: @Composable (modifier: Modifier) -> Unit
+    screenContent: @Composable (modifier: Modifier) -> Unit,
 ) {
     Scaffold(
         topBar = {
             TopAppBar(
                 backgroundColor = MaterialTheme.colors.primary,
-                title = { TitleContent(title = title) },
+                title = { titleContent() },
                 navigationIcon = onNavigateUp?.let {
                     val navigationIcon: @Composable () -> Unit = {
                         IconButton(
@@ -57,7 +60,7 @@ fun MoviesScaffold(
 }
 
 @Composable
-fun TitleContent(title: String) {
+fun MovieDetailTitle(title: String) {
     Row(
         modifier = Modifier
             .fillMaxWidth(),
@@ -69,5 +72,28 @@ fun TitleContent(title: String) {
             overflow = TextOverflow.Ellipsis,
             maxLines = 1,
         )
+    }
+}
+
+@Composable
+fun MovieTitle(title: String, onSearchClicked: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Text(
+            text = title, style = MaterialTheme.typography.h6,
+            color = Color.White,
+            overflow = TextOverflow.Ellipsis,
+            maxLines = 1,
+        )
+
+        IconButton(
+            onClick = { onSearchClicked() }
+        ) {
+            Icon(Icons.Filled.Search, contentDescription = "Search")
+        }
     }
 }
