@@ -8,6 +8,8 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 
 /**
+ * Binds and provides repositories
+ *
  * @author Manish Patole, contact@devmanishpatole.com
  * @since 30/06/22
  */

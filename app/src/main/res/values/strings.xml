@@ -5,4 +5,5 @@
     <string name="retry">Retry</string>
     <string name="oops">Oops!</string>
     <string name="no_internet">Slow or no internet connection\nPlease check your internet settings</string>
+    <string name="movies">Movies</string>
 </resources>
