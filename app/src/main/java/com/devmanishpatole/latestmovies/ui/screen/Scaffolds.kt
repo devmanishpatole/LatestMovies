@@ -60,12 +60,12 @@ fun MoviesScaffold(
 fun TitleContent(title: String) {
     Row(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = 8.dp),
+            .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            text = title, style = MaterialTheme.typography.h6, color = Color.White,
+            text = title, style = MaterialTheme.typography.h6,
+            color = Color.White,
             overflow = TextOverflow.Ellipsis,
             maxLines = 1,
         )

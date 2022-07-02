@@ -1,4 +1,4 @@
-package com.devmanishpatole.latestmovies.ui.screen
+package com.devmanishpatole.latestmovies.ui.navigation
 
 /**
  * Screen keys for navigation graph

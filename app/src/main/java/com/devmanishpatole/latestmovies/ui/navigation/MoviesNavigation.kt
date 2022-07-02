@@ -1,4 +1,4 @@
-package com.devmanishpatole.latestmovies.ui.screen
+package com.devmanishpatole.latestmovies.ui.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -8,6 +8,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.devmanishpatole.latestmovies.ui.screen.MovieDetail
+import com.devmanishpatole.latestmovies.ui.screen.MovieLauncher
 import com.devmanishpatole.latestmovies.viewmodels.DataSharingViewModel
 import com.devmanishpatole.latestmovies.viewmodels.MoviesViewModel
 
@@ -26,8 +28,9 @@ fun MoviesNavigation() {
 
     NavHost(navController = navController, startDestination = Screen.Movies.route) {
         composable(Screen.Movies.route) {
-            MovieLauncher(list) {
-                viewModel.movie = it
+            MovieLauncher(list) { movie ->
+                // Important to initialize movie before navigating to detail page
+                viewModel.movie = movie
                 navController.navigateToDetail()
             }
         }
@@ -40,4 +43,5 @@ fun MoviesNavigation() {
     }
 }
 
+/** Navigates to movie detail page */
 fun NavController.navigateToDetail() = navigate(Screen.Detail.route)
