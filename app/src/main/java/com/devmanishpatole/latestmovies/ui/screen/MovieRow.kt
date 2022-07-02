@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -26,17 +27,20 @@ import com.devmanishpatole.network.BuildConfig.IMAGE_URL
 import com.devmanishpatole.network.models.Movie
 
 /**
+ * Display movie detail in list
+ *
  * @author Manish Patole, contact@devmanishpatole.com
  * @since 01/07/22
  */
-
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun MovieRow(movie: Movie) {
+fun MovieRow(movie: Movie, onMovieSelect: (Movie) -> Unit) {
     Card(
         shape = RoundedCornerShape(4.dp),
         modifier = Modifier
             .padding(8.dp)
-            .wrapContentHeight()
+            .wrapContentHeight(),
+        onClick = { onMovieSelect(movie) }
     ) {
         Row(
             modifier = Modifier.fillMaxWidth()
@@ -60,7 +64,8 @@ fun MovieRow(movie: Movie) {
                     text = movie.overview ?: "",
                     style = MaterialTheme.typography.body2,
                     modifier = Modifier.padding(top = 8.dp),
-                    maxLines = 5, overflow = TextOverflow.Ellipsis
+                    maxLines = 5,
+                    overflow = TextOverflow.Ellipsis
                 )
             }
         }

@@ -4,11 +4,8 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
@@ -21,11 +18,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.devmanishpatole.latestmovies.R
 
 /**
+ * Various screen state's while paginating the movies list
+ *
  * @author Manish Patole, contact@devmanishpatole.com
  * @since 02/07/22
  */
@@ -106,8 +104,7 @@ fun ErrorItem(
             text = message,
             maxLines = 1,
             modifier = Modifier.weight(1f),
-            style = MaterialTheme.typography.h6,
-            color = Color.Red
+            style = MaterialTheme.typography.h6
         )
         OutlinedButton(onClick = onClickRetry) {
             Text(text = stringResource(R.string.try_again))

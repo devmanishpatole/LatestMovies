@@ -4,28 +4,28 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.paging.LoadState
-import androidx.paging.PagingData
-import androidx.paging.compose.collectAsLazyPagingItems
+import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.items
 import com.devmanishpatole.network.models.Movie
-import kotlinx.coroutines.flow.Flow
-
-/**
- * @author Manish Patole, contact@devmanishpatole.com
- * @since 02/07/22
- */
 
 /**
  * Displays movie list with pagination
+ *
+ * @author Manish Patole, contact@devmanishpatole.com
+ * @since 02/07/22
  */
 @Composable
-fun MovieList(movieList: Flow<PagingData<Movie>>) {
-    val movies = movieList.collectAsLazyPagingItems()
+fun MovieList(
+    movies: LazyPagingItems<Movie>,
+    onMovieSelect: (Movie) -> Unit
+) {
 
     LazyColumn {
         items(movies) { movie ->
             if (movie != null) {
-                MovieRow(movie = movie)
+                MovieRow(movie = movie) {
+                    onMovieSelect(it)
+                }
             }
         }
 
