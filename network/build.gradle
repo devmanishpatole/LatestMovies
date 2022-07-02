@@ -25,12 +25,14 @@ android {
             // URL for APIs
             buildConfigField 'String', 'BASE_URL', '"https://api.themoviedb.org/3/movie/"'
             buildConfigField 'String', 'API_KEY', '"5af6325c243fef1df3de616b2b27fbfa"'
+            buildConfigField 'String', 'IMAGE_URL', '"https://image.tmdb.org/t/p/original"'
         }
         release {
             minifyEnabled false
             // URL for APIs
             buildConfigField 'String', 'BASE_URL', '"https://api.themoviedb.org/3/movie/"'
             buildConfigField 'String', 'API_KEY', '"5af6325c243fef1df3de616b2b27fbfa"'
+            buildConfigField 'String', 'IMAGE_URL', '"https://image.tmdb.org/t/p/original"'
 
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }

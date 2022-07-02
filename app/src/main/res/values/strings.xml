@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">LatestMovies</string>
+    <string name="description">movie image</string>
 </resources>
