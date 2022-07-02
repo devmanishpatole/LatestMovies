@@ -18,9 +18,18 @@ import com.devmanishpatole.network.models.Movie
 @Composable
 fun MovieLauncher(
     movieList: LazyPagingItems<Movie>,
+    onSearchClick: () -> Unit,
     onMovieSelect: (Movie) -> Unit
 ) {
-    MoviesScaffold(title = stringResource(string.movies)) { modifier ->
+
+    MoviesScaffold(
+        {
+            MovieTitle(
+                title = stringResource(string.movies),
+                onSearchClicked = onSearchClick
+            )
+        }
+    ) { modifier ->
         Surface(
             modifier = modifier.fillMaxSize(),
             color = MaterialTheme.colors.background

@@ -20,5 +20,6 @@ import javax.inject.Inject
 class MoviesViewModel @Inject constructor(
     pager: Pager<Int, Movie>
 ) : ViewModel() {
+
     val movies: Flow<PagingData<Movie>> = pager.flow.cachedIn(viewModelScope)
 }

@@ -36,7 +36,10 @@ import com.devmanishpatole.network.BuildConfig
 @Composable
 fun MovieDetail(viewModel: DataSharingViewModel, onBackPress: () -> Unit) {
     viewModel.movie?.let { movie ->
-        MoviesScaffold(title = movie.title ?: "Detail", onNavigateUp = onBackPress) { modifier ->
+        MoviesScaffold(
+            { MovieDetailTitle(title = movie.title ?: stringResource(string.detail)) },
+            onNavigateUp = onBackPress
+        ) { modifier ->
             Column(modifier = modifier.verticalScroll(rememberScrollState())) {
                 AsyncImage(
                     model = Builder(LocalContext.current)

@@ -9,4 +9,5 @@ package com.devmanishpatole.latestmovies.ui.navigation
 sealed class Screen(val route: String){
     object Movies : Screen("movies")
     object Detail : Screen("detail")
+    object Search : Screen("search")
 }
