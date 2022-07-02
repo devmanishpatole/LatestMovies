@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">LatestMovies</string>
     <string name="description">movie image</string>
+    <string name="try_again">Try Again</string>
+    <string name="retry">Retry</string>
+    <string name="oops">Oops!</string>
+    <string name="no_internet">Slow or no internet connection\nPlease check your internet settings</string>
 </resources>
