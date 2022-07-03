@@ -30,6 +30,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.PagingData
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.devmanishpatole.latestmovies.R.string
+import com.devmanishpatole.latestmovies.ui.utils.Constant.SEARCH_QUERY_LENGTH
 import com.devmanishpatole.latestmovies.viewmodels.SearchMoviesViewModel
 import com.devmanishpatole.network.models.Movie
 import kotlinx.coroutines.flow.Flow
@@ -67,13 +68,13 @@ fun MovieSearch(
                 }
 
                 SearchTextField { query ->
-                    if (query.length > 2) {
+                    if (query.length > SEARCH_QUERY_LENGTH) {
                         queryLength = query.length
                         viewModel.searchMovies(query)
                     }
                 }
 
-                if (queryLength > 2) {
+                if (queryLength > SEARCH_QUERY_LENGTH) {
                     SearchMovieList(list = movieList)
                 }
             }

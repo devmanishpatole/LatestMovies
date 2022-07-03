@@ -49,7 +49,9 @@ fun MovieList(
                 loadState.refresh is LoadState.Error -> {
                     val e = loadState.refresh as LoadState.Error
                     e.error.localizedMessage?.let { message ->
-                        if (message.contains("Internet Unavailable")) {
+                        if (message.contains("Query is too small")) {
+                            // Ignoring the empty query error display
+                        } else if (message.contains("Internet Unavailable")) {
                             item {
                                 ErrorNoInternet(
                                     modifier = Modifier.fillParentMaxSize(),
