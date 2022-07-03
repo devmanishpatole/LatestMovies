@@ -32,7 +32,7 @@ fun MovieList(
         with(movies) {
             when {
                 (loadState.append is LoadState.NotLoading) &&
-                        loadState.append.endOfPaginationReached && movies.itemCount == 0-> {
+                        loadState.append.endOfPaginationReached && movies.itemCount == 0 -> {
                     item {
                         ErrorNoMovies(
                             modifier = Modifier.fillParentMaxSize(),
