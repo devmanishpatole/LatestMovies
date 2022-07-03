@@ -1,0 +1,9 @@
+// Gradle config file to hold Dagger Hilt dependencies and configurations
+dependencies {
+    // Dagger - Hilt
+    implementation "com.google.dagger:hilt-android:$dagger_version"
+    kapt "com.google.dagger:hilt-android-compiler:$dagger_version"
+    // To integrate with ViewModel
+    implementation "androidx.hilt:hilt-navigation-compose:$dagger_jetpack_version"
+    kapt "androidx.hilt:hilt-compiler:$dagger_jetpack_version"
+}

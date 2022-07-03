@@ -1,0 +1,50 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
+}
+
+apply from: '../dagger.gradle'
+apply from: '../testing.gradle'
+
+android {
+    compileSdk rootProject.ext.compile_sdk
+
+    defaultConfig {
+        minSdk rootProject.ext.min_sdk
+        targetSdk rootProject.ext.compile_sdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    api "androidx.core:core-ktx:$core_ktx_version"
+    api "androidx.compose.ui:ui:$compose_version"
+    api "androidx.compose.material:material:$compose_version"
+    api "androidx.compose.ui:ui-tooling-preview:$compose_version"
+    api "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+    api "androidx.activity:activity-compose:$compose_activity_version"
+    // Paging Compose
+    api "androidx.paging:paging-compose:$paging_compose_version"
+    // Image loading Compose
+    api "io.coil-kt:coil-compose:$coil_version"
+    // Splash screen API
+    api "androidx.core:core-splashscreen:$splash_screen_version"
+}
