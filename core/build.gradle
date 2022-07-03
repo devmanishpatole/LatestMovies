@@ -6,6 +6,7 @@ plugins {
 }
 
 apply from: '../dagger.gradle'
+apply from: '../testing.gradle'
 
 android {
     compileSdk rootProject.ext.compile_sdk

@@ -67,7 +67,7 @@ fun MovieSearch(
                     mutableStateOf(0)
                 }
 
-                SearchMovie { query ->
+                SearchTextField { query ->
                     if (query.length > 2) {
                         queryLength = query.length
                         viewModel.searchMovies(query)
@@ -83,7 +83,7 @@ fun MovieSearch(
 }
 
 @Composable
-fun SearchMovie(onSearchClick: (String) -> Unit) {
+fun SearchTextField(onSearchClick: (String) -> Unit) {
     val focusRequester = remember {
         FocusRequester()
     }
@@ -102,7 +102,7 @@ fun SearchMovie(onSearchClick: (String) -> Unit) {
                 text = newText
             },
             colors = TextFieldDefaults.textFieldColors(
-                backgroundColor = Color.White
+                backgroundColor = MaterialTheme.colors.background
             ),
             modifier = Modifier
                 .focusRequester(focusRequester)
