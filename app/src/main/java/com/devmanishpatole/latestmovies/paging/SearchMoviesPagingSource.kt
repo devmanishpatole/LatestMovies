@@ -2,6 +2,7 @@ package com.devmanishpatole.latestmovies.paging
 
 import com.devmanishpatole.core.repositories.Either
 import com.devmanishpatole.latestmovies.repositories.MoviesRepository
+import com.devmanishpatole.latestmovies.ui.utils.Constant.SEARCH_QUERY_LENGTH
 import com.devmanishpatole.network.models.MoviesResponse
 import javax.inject.Inject
 
@@ -17,6 +18,10 @@ class SearchMoviesPagingSource @Inject constructor(
 ) : MoviesPagingSource() {
 
     override suspend fun fetchMovies(nextPage: Int): Either<MoviesResponse> {
-        return repository.searchMovies(query, nextPage)
+        return if (query.length > SEARCH_QUERY_LENGTH) {
+            repository.searchMovies(query, nextPage)
+        } else {
+            Either.error("Query is too small")
+        }
     }
 }

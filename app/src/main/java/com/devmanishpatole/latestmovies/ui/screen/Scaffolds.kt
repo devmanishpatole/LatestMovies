@@ -17,8 +17,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.devmanishpatole.core.utils.drawableId
 import com.devmanishpatole.latestmovies.R
 
 /**
@@ -44,10 +46,12 @@ fun MoviesScaffold(
                             modifier = Modifier.padding(start = 4.dp),
                             onClick = onNavigateUp
                         ) {
+                            val resId = R.drawable.ic_back
                             Icon(
-                                painterResource(R.drawable.ic_back),
+                                painterResource(resId),
                                 "Back",
-                                tint = MaterialTheme.colors.onPrimary
+                                tint = MaterialTheme.colors.onPrimary,
+                                modifier = Modifier.semantics { drawableId = resId }
                             )
                         }
                     }

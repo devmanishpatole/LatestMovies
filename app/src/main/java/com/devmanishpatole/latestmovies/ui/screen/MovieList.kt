@@ -32,7 +32,7 @@ fun MovieList(
         with(movies) {
             when {
                 (loadState.append is LoadState.NotLoading) &&
-                        loadState.append.endOfPaginationReached && movies.itemCount == 0-> {
+                        loadState.append.endOfPaginationReached && movies.itemCount == 0 -> {
                     item {
                         ErrorNoMovies(
                             modifier = Modifier.fillParentMaxSize(),
@@ -49,7 +49,9 @@ fun MovieList(
                 loadState.refresh is LoadState.Error -> {
                     val e = loadState.refresh as LoadState.Error
                     e.error.localizedMessage?.let { message ->
-                        if (message.contains("Internet Unavailable")) {
+                        if (message.contains("Query is too small")) {
+                            // Ignoring the empty query error display
+                        } else if (message.contains("Internet Unavailable")) {
                             item {
                                 ErrorNoInternet(
                                     modifier = Modifier.fillParentMaxSize(),

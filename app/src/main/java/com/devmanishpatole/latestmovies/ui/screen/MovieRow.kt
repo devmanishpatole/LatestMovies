@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
@@ -23,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.devmanishpatole.latestmovies.R
+import com.devmanishpatole.latestmovies.ui.utils.TestTag.MOVIE_ROW
 import com.devmanishpatole.network.BuildConfig.IMAGE_URL
 import com.devmanishpatole.network.models.Movie
 
@@ -39,7 +41,8 @@ fun MovieRow(movie: Movie, onMovieSelect: (Movie) -> Unit) {
         shape = RoundedCornerShape(4.dp),
         modifier = Modifier
             .padding(8.dp)
-            .wrapContentHeight(),
+            .wrapContentHeight()
+            .testTag(MOVIE_ROW),
         onClick = { onMovieSelect(movie) }
     ) {
         Row(

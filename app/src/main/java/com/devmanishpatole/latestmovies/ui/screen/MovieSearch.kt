@@ -21,7 +21,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
@@ -31,6 +30,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.PagingData
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.devmanishpatole.latestmovies.R.string
+import com.devmanishpatole.latestmovies.ui.utils.Constant.SEARCH_QUERY_LENGTH
 import com.devmanishpatole.latestmovies.viewmodels.SearchMoviesViewModel
 import com.devmanishpatole.network.models.Movie
 import kotlinx.coroutines.flow.Flow
@@ -67,14 +67,14 @@ fun MovieSearch(
                     mutableStateOf(0)
                 }
 
-                SearchMovie { query ->
-                    if (query.length > 2) {
+                SearchTextField { query ->
+                    if (query.length > SEARCH_QUERY_LENGTH) {
                         queryLength = query.length
                         viewModel.searchMovies(query)
                     }
                 }
 
-                if (queryLength > 2) {
+                if (queryLength > SEARCH_QUERY_LENGTH) {
                     SearchMovieList(list = movieList)
                 }
             }
@@ -83,7 +83,7 @@ fun MovieSearch(
 }
 
 @Composable
-fun SearchMovie(onSearchClick: (String) -> Unit) {
+fun SearchTextField(onSearchClick: (String) -> Unit) {
     val focusRequester = remember {
         FocusRequester()
     }
@@ -102,7 +102,7 @@ fun SearchMovie(onSearchClick: (String) -> Unit) {
                 text = newText
             },
             colors = TextFieldDefaults.textFieldColors(
-                backgroundColor = Color.White
+                backgroundColor = MaterialTheme.colors.background
             ),
             modifier = Modifier
                 .focusRequester(focusRequester)

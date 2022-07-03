@@ -19,9 +19,11 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest.Builder
+import com.devmanishpatole.core.utils.drawableId
 import com.devmanishpatole.latestmovies.R.drawable
 import com.devmanishpatole.latestmovies.R.string
 import com.devmanishpatole.latestmovies.viewmodels.DataSharingViewModel
@@ -66,10 +68,13 @@ fun MovieDetail(viewModel: DataSharingViewModel, onBackPress: () -> Unit) {
                         modifier = Modifier.padding(8.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
+                        val resId = drawable.ic_rating
                         Image(
-                            painter = painterResource(id = drawable.ic_rating),
+                            painter = painterResource(id = resId),
                             contentDescription = "",
-                            Modifier.wrapContentSize()
+                            Modifier
+                                .wrapContentSize()
+                                .semantics { drawableId = resId }
                         )
 
                         Text(
@@ -84,10 +89,13 @@ fun MovieDetail(viewModel: DataSharingViewModel, onBackPress: () -> Unit) {
                             modifier = Modifier.padding(8.dp),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
+                            val resId = drawable.ic_calendar
                             Image(
-                                painter = painterResource(id = drawable.ic_calendar),
+                                painter = painterResource(id = resId),
                                 contentDescription = "",
-                                Modifier.wrapContentSize()
+                                Modifier
+                                    .wrapContentSize()
+                                    .semantics { drawableId = resId }
                             )
 
                             Text(
