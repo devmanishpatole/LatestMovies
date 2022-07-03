@@ -5,6 +5,7 @@
     <string name="retry">Retry</string>
     <string name="oops">Oops!</string>
     <string name="no_internet">Slow or no internet connection\nPlease check your internet settings</string>
+    <string name="no_data">No movie title is matching the searched query\nPlease correct the query and retry</string>
     <string name="movies">Movies</string>
     <string name="search">Search</string>
     <string name="detail">Detail</string>

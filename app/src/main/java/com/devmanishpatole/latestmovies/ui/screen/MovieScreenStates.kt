@@ -14,7 +14,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -50,6 +49,42 @@ fun LoadingItem() {
             .padding(16.dp)
             .wrapContentWidth(Alignment.CenterHorizontally)
     )
+}
+
+@Composable
+fun ErrorNoMovies(
+    modifier: Modifier = Modifier,
+    onClickRetry: () -> Unit
+) {
+    Column(
+        modifier = modifier,
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.ic_no_data),
+            contentDescription = "",
+            Modifier.padding(8.dp)
+        )
+        Text(
+            modifier = Modifier.padding(8.dp),
+            text = stringResource(R.string.oops),
+            style = MaterialTheme.typography.h6,
+            textAlign = TextAlign.Center
+        )
+        Text(
+            modifier = Modifier.padding(4.dp),
+            text = stringResource(R.string.no_data),
+            style = MaterialTheme.typography.body1,
+            textAlign = TextAlign.Center
+        )
+        OutlinedButton(
+            onClick = onClickRetry,
+            modifier = Modifier.padding(4.dp)
+        ) {
+            Text(text = stringResource(R.string.retry))
+        }
+    }
 }
 
 

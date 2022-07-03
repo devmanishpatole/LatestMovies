@@ -31,6 +31,15 @@ fun MovieList(
 
         with(movies) {
             when {
+                (loadState.append is LoadState.NotLoading) &&
+                        loadState.append.endOfPaginationReached && movies.itemCount == 0-> {
+                    item {
+                        ErrorNoMovies(
+                            modifier = Modifier.fillParentMaxSize(),
+                            onClickRetry = { retry() }
+                        )
+                    }
+                }
                 loadState.refresh is LoadState.Loading -> {
                     item { LoadingView(modifier = Modifier.fillParentMaxSize()) }
                 }
