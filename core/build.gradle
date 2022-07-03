@@ -44,4 +44,6 @@ dependencies {
     api "androidx.paging:paging-compose:$paging_compose_version"
     // Image loading Compose
     api "io.coil-kt:coil-compose:$coil_version"
+    // Splash screen API
+    api "androidx.core:core-splashscreen:$splash_screen_version"
 }

@@ -23,6 +23,9 @@ buildscript {
         // Image loading
         coil_version = '2.1.0'
 
+        // Splash screen
+        splash_screen_version = '1.0.0-rc01'
+
         // Network client
         retrofit_version = '2.9.0'
         okhttp_version = '4.9.3'
