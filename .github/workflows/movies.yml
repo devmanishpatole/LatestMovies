@@ -25,7 +25,7 @@ jobs:
   unit-test:
     needs: [lint]
     runs-on: ubuntu-latest
-    setps:
+    steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
