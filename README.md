@@ -1,6 +1,6 @@
 ![photo](media/latest_movies.png)
 
-# LatestMovies Application
+# LatestMovies Application   [![CI](https://github.com/devmanishpatole/LatestMovies/actions/workflows/movies.yml/badge.svg)](https://github.com/devmanishpatole/LatestMovies/actions/workflows/movies.yml)
 
 
 **LatestMovies** is a sample Android application, built to demonstrate use of *Modern Android development* tools.
