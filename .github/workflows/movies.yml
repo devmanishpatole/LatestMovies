@@ -38,7 +38,7 @@ jobs:
           name: unit-test.html
           path: app/build/reports/tests/testDebugUnitTest/
 
-  ui-test-on-gradle-managed-devices:
+  instrumentation-test:
     needs: [unit-test]
     runs-on: macos-latest
     steps:
@@ -50,8 +50,8 @@ jobs:
         with:
             java-version: 11
 
-     - name: Run instrumented tests
-       run: ./gradlew -Pandroid.experimental.androidTest.useUnifiedTestPlatform=true -Pandroid.experimental.androidTest.numManagedDeviceShards=2 sdk30And31GroupDebugAndroidTest
+      - name: Run instrumented tests
+        run: ./gradlew -Pandroid.experimental.androidTest.useUnifiedTestPlatform=true -Pandroid.experimental.androidTest.numManagedDeviceShards=2 sdk30And31GroupDebugAndroidTest
 
       - name: Upload instrumented tests report
         uses: actions/upload-artifact@v3
@@ -84,7 +84,7 @@ jobs:
 #          path: app/build/reports/androidTests/connected/
 
   package:
-    needs: [ui-test-on-gradle-managed-devices]
+    needs: [instrumentation-test]
     name: Generate APK
     runs-on: ubuntu-latest
     steps:
