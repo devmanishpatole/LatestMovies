@@ -51,7 +51,7 @@ jobs:
             java-version: 11
 
       - name: Run instrumented tests
-        run: ./gradlew -Pandroid.experimental.androidTest.useUnifiedTestPlatform=true -Pandroid.experimental.androidTest.numManagedDeviceShards=2 sdk30And31GroupDebugAndroidTest
+        run: ./gradlew -Pandroid.experimental.androidTest.useUnifiedTestPlatform=true pixel2DebugAndroidTest
 
       - name: Upload instrumented tests report
         uses: actions/upload-artifact@v3
