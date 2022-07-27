@@ -38,8 +38,7 @@ jobs:
           name: unit-test.html
           path: app/build/reports/tests/testDebugUnitTest/
 
-
-  ui-test:
+  ui-test-on-gradle-managed-devices:
     needs: [unit-test]
     runs-on: macos-latest
     steps:
@@ -51,20 +50,41 @@ jobs:
         with:
             java-version: 11
 
-      - name: Run UI test
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 29
-          script: ./gradlew connectedCheck
+     - name: Run instrumented tests
+       run: ./gradlew -Pandroid.experimental.androidTest.useUnifiedTestPlatform=true -Pandroid.experimental.androidTest.numManagedDeviceShards=2 sdk30And31GroupDebugAndroidTest
 
-      - name: Upload UI test report
+      - name: Upload instrumented tests report
         uses: actions/upload-artifact@v3
         with:
-          name: ui-test.html
-          path: app/build/reports/androidTests/connected/
+          name: ui-instrumented-test.html
+          path: app/build/reports/androidTests/managedDevice
+
+#  ui-test:
+#    needs: [unit-test]
+#    runs-on: macos-latest
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v3
+#
+#      - name: Set up JDK 11
+#        uses: actions/setup-java@v1
+#        with:
+#            java-version: 11
+#
+#      - name: Run UI test
+#        uses: reactivecircus/android-emulator-runner@v2
+#        with:
+#          api-level: 29
+#          script: ./gradlew connectedCheck
+#
+#      - name: Upload UI test report
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: ui-test.html
+#          path: app/build/reports/androidTests/connected/
 
   package:
-    needs: [ui-test]
+    needs: [ui-test-on-gradle-managed-devices]
     name: Generate APK
     runs-on: ubuntu-latest
     steps:
