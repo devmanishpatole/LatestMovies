@@ -1,3 +1,5 @@
+import com.android.build.api.dsl.ManagedVirtualDevice
+
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
@@ -25,6 +27,32 @@ android {
 
         sourceSets {
             androidTest.java.srcDirs += ["${project(':core').projectDir}/src/androidTest/java"]
+        }
+    }
+
+    testOptions {
+
+        // Setup devices on which instrumentation tests have to run
+        devices {
+            pixel2 (ManagedVirtualDevice) {
+                device = "Pixel 2"
+                apiLevel = 29
+                systemImageSource = "google"
+                abi = "x86"
+            }
+            pixel5 (ManagedVirtualDevice) {
+                device = "Pixel 5"
+                apiLevel = 29
+                systemImageSource = "google"
+                abi = "x86_64"
+            }
+        }
+
+        // Setup groups based on existing devices
+        deviceGroups {
+            sdk30And31 {
+                targetDevices.addAll(devices.pixel5,devices.pixel2)
+            }
         }
     }
 
